@@ -26,7 +26,7 @@ before_script:
 
 script:
   # Build CTT agent base container
-  - docker build -t "${DOCKER_ORG_REPO}" "ctt-server/"
+  - docker build -t "${DOCKER_ORG_REPO}:${DOCKER_LABEL}" "ctt-server/"
   #
   #
   # DockerHub login
