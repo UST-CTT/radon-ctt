@@ -8,6 +8,21 @@ env:
     - DOCKER_ORG=ustctt
     - DOCKER_REPO=ctt
     - DOCKER_ORG_REPO="${DOCKER_ORG}/${DOCKER_REPO}"
+    - REPO_URL="https://github.com/radon-h2020/radon-ctt.git"
+    - REPO_DIR="radon-ctt"
+
+jobs:
+  include:
+    - env:
+      - REPO_BRANCH="dev"
+      - DOCKER_LABEL="dev"
+    - env:
+      - REPO_BRANCH="master"
+      - DOCKER_LABEL="latest"
+
+before_script:
+  - git clone --single-branch -branch "${REPO_BRANCH}" "${REPO_URL}" "${REPO_DIR}"
+  - cd "${REPO_DIR}"
 
 script:
   # Build CTT agent base container
@@ -19,7 +34,7 @@ script:
   #
   #
   # Push CTT agent base container to DockerHub
-  - docker push "${DOCKER_ORG_REPO}"
+  - docker push "${DOCKER_ORG_REPO}:${DOCKER_LABEL}"
   #
   #
   # DockerHub logout
