@@ -3,6 +3,9 @@ FROM python:3-alpine
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
+RUN mkdir -p /tmp/RadonCTT
+VOLUME /tmp/RadonCTT
+
 COPY requirements.txt /usr/src/app/
 
 RUN apk --update add python py-pip openssl ca-certificates py-openssl wget git

@@ -5,8 +5,8 @@ services:
 
 env:
   global:
-    - DOCKER_ORG=ustctt
-    - DOCKER_REPO=ctt
+    - DOCKER_ORG=radonconsortium
+    - DOCKER_REPO=radon-ctt
     - DOCKER_ORG_REPO="${DOCKER_ORG}/${DOCKER_REPO}"
     - REPO_URL="https://github.com/radon-h2020/radon-ctt.git"
     - REPO_DIR="radon-ctt"
